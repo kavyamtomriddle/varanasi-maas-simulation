@@ -46,7 +46,6 @@ This project is divided into a **Python Data Science** frontend and a **Java Ent
 
 ## 📂 Repository Structure
 
-```text
 varanasi-maas-simulation/
 │
 ├── src/main/java/org/hitkavyam/
