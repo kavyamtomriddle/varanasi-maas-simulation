@@ -43,7 +43,7 @@ This project is divided into a **Python Data Science** frontend and a **Java Ent
 * **Parallel Execution:** Configured the `QSim` microsimulation engine for multi-threaded execution to simulate 3,246 unique commuter profiles simultaneously.
 
 ---
-
+```text
 ## 📂 Repository Structure
 
 varanasi-maas-simulation/
@@ -63,6 +63,7 @@ varanasi-maas-simulation/
 │   └── varanasi_equilibrium_3d.html   # Interactive Pydeck map (Host via GitHub pages)
 │
 └── pom.xml                  # Maven Dependencies (GeoTools, MATSim, Guice)
+```
 
 ## 🚀 How to Run Locally
 
