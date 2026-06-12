@@ -1,0 +1,54 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### ========================================= ###
+### 🛑 MATSim & Data Science Exclusions       ###
+### ========================================= ###
+
+# 1. Ignore the massive simulation outputs
+output/
+phase5_outputs/
+
+# 2. Ignore compressed gigabyte data files anywhere in the project
+*.gz
+
+# 3. Ignore Python/Jupyter Notebook system files
+.ipynb_checkpoints/
+__pycache__/

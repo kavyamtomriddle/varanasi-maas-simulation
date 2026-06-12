@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.hitkavyam</groupId>
+  <artifactId>hitkavyam-matsim</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>Hitkavyam — Varanasi MaaS MATSim Simulation</name>
+
+  <!-- ══════════════════════════════════════════════════════
+       JAVA VERSION
+       MATSim 15.x requires Java 11+. We pin to 17 LTS.
+  ═══════════════════════════════════════════════════════ -->
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <matsim.version>15.0</matsim.version>
+  </properties>
+
+  <!-- ══════════════════════════════════════════════════════
+       REPOSITORIES
+       MATSim's main JAR is NOT on Maven Central — it lives
+       on their own Nexus server. Without this block,
+       Maven will fail to download the dependency.
+  ═══════════════════════════════════════════════════════ -->
+  <repositories>
+    <repository>
+      <id>matsim</id>
+      <url>https://repo.matsim.org/repository/matsim</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+
+    <!-- ── CORE MATSIM ──────────────────────────────────
+         The main simulation engine, network loading,
+         scenario management, event handling.
+         Used in every phase of your roadmap.
+    ─────────────────────────────────────────────────── -->
+    <dependency>
+      <groupId>org.matsim</groupId>
+      <artifactId>matsim</artifactId>
+      <version>${matsim.version}</version>
+    </dependency>
+
+    <!-- ── MATSIM PT CONTRIB ────────────────────────────
+         Public transit schedule, transit router,
+         UPSRTC route loading. Required for your
+         transit vehicle and schedule XML files.
+    ─────────────────────────────────────────────────── -->
+    <dependency>
+      <groupId>org.matsim.contrib</groupId>
+      <artifactId>pseudosimulation</artifactId>
+      <version>${matsim.version}</version>
+    </dependency>
+
+    <!-- ── SLF4J + LOG4J ────────────────────────────────
+         MATSim uses SLF4J for logging. Without this
+         you get ugly warnings on every run.
+    ─────────────────────────────────────────────────── -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.20.0</version>
+    </dependency>
+
+    <!-- ── JUNIT 5 ───────────────────────────────────────
+         For Phase 3 unit-testing your custom scoring.
+    ─────────────────────────────────────────────────── -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.0</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <!-- ══════════════════════════════════════════════════════
+       BUILD PLUGINS
+  ═══════════════════════════════════════════════════════ -->
+  <build>
+    <plugins>
+
+      <!-- Enforce Java 17 compilation -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+
+      <!-- Fat JAR — bundles all dependencies into one
+           executable JAR for your Phase 4 cluster runs -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals><goal>shade</goal></goals>
+            <configuration>
+              <transformers>
+                <transformer implementation=
+                                     "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>org.hitkavyam.Phase1_NetworkCheck</mainClass>
+                </transformer>
+                <!-- Critical: MATSim uses ServiceLoader — this merges
+                     META-INF/services files correctly -->
+                <transformer implementation=
+                                     "org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

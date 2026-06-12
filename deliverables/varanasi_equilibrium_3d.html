@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.14.0/dist/maplibre-gl.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.2.*/dist/index.js'></script>
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/@deck.gl/widgets@~9.2.*/dist/stylesheet.css />
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+
+#deck-container .error_text {
+  color: red;
+  background: none;
+  position: absolute;
+  z-index: 100;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 15,
+    "latitude": 25.3176,
+    "longitude": 82.9739,
+    "pitch": 45,
+    "zoom": 11.5
+  },
+  "layers": [
+    {
+      "@@type": "H3HexagonLayer",
+      "data": [
+        {
+          "car_users": 0,
+          "color": [
+            255,
+            0,
+            60,
+            74
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164093fffff",
+          "lat": 25.334243011327327,
+          "lng": 82.97250623126769,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 1
+        },
+        {
+          "car_users": 1,
+          "color": [
+            204,
+            51,
+            60,
+            104
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164099fffff",
+          "lat": 25.341092285328813,
+          "lng": 82.95892883837422,
+          "pt_adoption_rate": 20.0,
+          "pt_users": 2,
+          "total_agents": 10
+        },
+        {
+          "car_users": 1,
+          "color": [
+            84,
+            170,
+            60,
+            84
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16409bfffff",
+          "lat": 25.341310025221627,
+          "lng": 82.96816517687694,
+          "pt_adoption_rate": 66.7,
+          "pt_users": 2,
+          "total_agents": 3
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            94
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c1640b3fffff",
+          "lat": 25.312604930274688,
+          "lng": 82.96705632620345,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 2,
+          "total_agents": 6
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            84
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c1640bbfffff",
+          "lat": 25.319673440377375,
+          "lng": 82.96271564564995,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 1,
+          "total_agents": 3
+        },
+        {
+          "car_users": 2,
+          "color": [
+            153,
+            102,
+            60,
+            91
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c1640d3fffff",
+          "lat": 25.348157969192258,
+          "lng": 82.95458778475309,
+          "pt_adoption_rate": 40.0,
+          "pt_users": 2,
+          "total_agents": 5
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            80
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c1640d9fffff",
+          "lat": 25.35500352289173,
+          "lng": 82.9410111269904,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 1,
+          "total_agents": 2
+        },
+        {
+          "car_users": 2,
+          "color": [
+            156,
+            98,
+            60,
+            111
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c1640dbfffff",
+          "lat": 25.35522282139575,
+          "lng": 82.95024665675699,
+          "pt_adoption_rate": 38.5,
+          "pt_users": 5,
+          "total_agents": 13
+        },
+        {
+          "car_users": 1,
+          "color": [
+            127,
+            127,
+            60,
+            88
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c1642b3fffff",
+          "lat": 25.362067044441677,
+          "lng": 82.93667000041556,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 2,
+          "total_agents": 4
+        },
+        {
+          "car_users": 0,
+          "color": [
+            0,
+            255,
+            60,
+            74
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c1642bbfffff",
+          "lat": 25.369129733890365,
+          "lng": 82.93232879967158,
+          "pt_adoption_rate": 100.0,
+          "pt_users": 1,
+          "total_agents": 1
+        },
+        {
+          "car_users": 0,
+          "color": [
+            255,
+            0,
+            60,
+            74
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164409fffff",
+          "lat": 25.385871049806365,
+          "lng": 83.03451228805535,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 1
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            94
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16440dfffff",
+          "lat": 25.37858943111972,
+          "lng": 83.02961200969762,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 2,
+          "total_agents": 6
+        },
+        {
+          "car_users": 0,
+          "color": [
+            255,
+            0,
+            60,
+            80
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164425fffff",
+          "lat": 25.34988815129279,
+          "lng": 83.02849627417427,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 2
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            88
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164429fffff",
+          "lat": 25.364239739254074,
+          "lng": 83.0290541125092,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 2,
+          "total_agents": 4
+        },
+        {
+          "car_users": 1,
+          "color": [
+            170,
+            84,
+            60,
+            102
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c16442dfffff",
+          "lat": 25.356956990940876,
+          "lng": 83.02415454920735,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 3,
+          "total_agents": 9
+        },
+        {
+          "car_users": 0,
+          "color": [
+            102,
+            153,
+            60,
+            91
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164447fffff",
+          "lat": 25.385655940588478,
+          "lng": 83.02526983632791,
+          "pt_adoption_rate": 60.0,
+          "pt_users": 3,
+          "total_agents": 5
+        },
+        {
+          "car_users": 0,
+          "color": [
+            255,
+            0,
+            60,
+            80
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164461fffff",
+          "lat": 25.371092175823705,
+          "lng": 83.01547087369963,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 2
+        },
+        {
+          "car_users": 1,
+          "color": [
+            255,
+            0,
+            60,
+            97
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164463fffff",
+          "lat": 25.371307414122466,
+          "lng": 83.02471216335204,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 7
+        },
+        {
+          "car_users": 1,
+          "color": [
+            141,
+            113,
+            60,
+            102
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164465fffff",
+          "lat": 25.363809696667598,
+          "lng": 83.01057204052118,
+          "pt_adoption_rate": 44.4,
+          "pt_users": 4,
+          "total_agents": 9
+        },
+        {
+          "car_users": 1,
+          "color": [
+            127,
+            127,
+            60,
+            88
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164467fffff",
+          "lat": 25.36402499918239,
+          "lng": 83.01981274903316,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 2,
+          "total_agents": 4
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            88
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164469fffff",
+          "lat": 25.37815852067143,
+          "lng": 83.01112892325463,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 2,
+          "total_agents": 4
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            100
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16446bfffff",
+          "lat": 25.37837425725327,
+          "lng": 83.02037013897336,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 4,
+          "total_agents": 8
+        },
+        {
+          "car_users": 1,
+          "color": [
+            170,
+            84,
+            60,
+            94
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16446dfffff",
+          "lat": 25.370876375011647,
+          "lng": 83.00623023923755,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 2,
+          "total_agents": 6
+        },
+        {
+          "car_users": 7,
+          "color": [
+            161,
+            93,
+            60,
+            182
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164501fffff",
+          "lat": 25.32782202713606,
+          "lng": 83.00456061601592,
+          "pt_adoption_rate": 36.5,
+          "pt_users": 27,
+          "total_agents": 74
+        },
+        {
+          "car_users": 18,
+          "color": [
+            156,
+            98,
+            60,
+            255
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164503fffff",
+          "lat": 25.328036524489818,
+          "lng": 83.01379972916243,
+          "pt_adoption_rate": 38.8,
+          "pt_users": 73,
+          "total_agents": 188
+        },
+        {
+          "car_users": 8,
+          "color": [
+            163,
+            91,
+            60,
+            204
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164505fffff",
+          "lat": 25.320537295387545,
+          "lng": 82.99966321279433,
+          "pt_adoption_rate": 35.9,
+          "pt_users": 37,
+          "total_agents": 103
+        },
+        {
+          "car_users": 20,
+          "color": [
+            164,
+            90,
+            60,
+            225
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164507fffff",
+          "lat": 25.32075185606388,
+          "lng": 83.00890174475882,
+          "pt_adoption_rate": 35.6,
+          "pt_users": 48,
+          "total_agents": 135
+        },
+        {
+          "car_users": 4,
+          "color": [
+            178,
+            76,
+            60,
+            149
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c164509fffff",
+          "lat": 25.334891367352427,
+          "lng": 83.00021941231431,
+          "pt_adoption_rate": 30.0,
+          "pt_users": 12,
+          "total_agents": 40
+        },
+        {
+          "car_users": 9,
+          "color": [
+            172,
+            82,
+            60,
+            189
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c16450bfffff",
+          "lat": 25.335106362933885,
+          "lng": 83.00945845128246,
+          "pt_adoption_rate": 32.5,
+          "pt_users": 27,
+          "total_agents": 83
+        },
+        {
+          "car_users": 4,
+          "color": [
+            133,
+            121,
+            60,
+            156
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c16450dfffff",
+          "lat": 25.327606968217868,
+          "lng": 82.99532215834593,
+          "pt_adoption_rate": 47.8,
+          "pt_users": 22,
+          "total_agents": 46
+        },
+        {
+          "car_users": 3,
+          "color": [
+            156,
+            98,
+            60,
+            148
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164511fffff",
+          "lat": 25.335534668665368,
+          "lng": 83.02793849468362,
+          "pt_adoption_rate": 38.5,
+          "pt_users": 15,
+          "total_agents": 39
+        },
+        {
+          "car_users": 1,
+          "color": [
+            198,
+            56,
+            60,
+            102
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164513fffff",
+          "lat": 25.33574797855206,
+          "lng": 83.03717949829465,
+          "pt_adoption_rate": 22.2,
+          "pt_users": 2,
+          "total_agents": 9
+        },
+        {
+          "car_users": 7,
+          "color": [
+            149,
+            105,
+            60,
+            188
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164515fffff",
+          "lat": 25.32825046014736,
+          "lng": 83.02303949737467,
+          "pt_adoption_rate": 41.5,
+          "pt_users": 34,
+          "total_agents": 82
+        },
+        {
+          "car_users": 2,
+          "color": [
+            160,
+            94,
+            60,
+            133
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164517fffff",
+          "lat": 25.328463833977096,
+          "lng": 83.03227992024168,
+          "pt_adoption_rate": 37.0,
+          "pt_users": 10,
+          "total_agents": 27
+        },
+        {
+          "car_users": 2,
+          "color": [
+            140,
+            114,
+            60,
+            123
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c164519fffff",
+          "lat": 25.342604672472486,
+          "lng": 83.02359699388464,
+          "pt_adoption_rate": 45.0,
+          "pt_users": 9,
+          "total_agents": 20
+        },
+        {
+          "car_users": 2,
+          "color": [
+            212,
+            42,
+            60,
+            109
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16451bfffff",
+          "lat": 25.34281848043189,
+          "lng": 83.032837923886,
+          "pt_adoption_rate": 16.7,
+          "pt_users": 2,
+          "total_agents": 12
+        },
+        {
+          "car_users": 1,
+          "color": [
+            165,
+            89,
+            60,
+            149
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c16451dfffff",
+          "lat": 25.335320796748753,
+          "lng": 83.0186981455425,
+          "pt_adoption_rate": 35.0,
+          "pt_users": 14,
+          "total_agents": 40
+        },
+        {
+          "car_users": 14,
+          "color": [
+            175,
+            79,
+            60,
+            210
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164521fffff",
+          "lat": 25.30618133218442,
+          "lng": 82.99910707193878,
+          "pt_adoption_rate": 31.2,
+          "pt_users": 35,
+          "total_agents": 112
+        },
+        {
+          "car_users": 16,
+          "color": [
+            148,
+            106,
+            60,
+            224
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164523fffff",
+          "lat": 25.306395457767213,
+          "lng": 83.0083450969534,
+          "pt_adoption_rate": 41.8,
+          "pt_users": 56,
+          "total_agents": 134
+        },
+        {
+          "car_users": 3,
+          "color": [
+            172,
+            82,
+            60,
+            149
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164525fffff",
+          "lat": 25.298895477467806,
+          "lng": 82.99421038355113,
+          "pt_adoption_rate": 32.5,
+          "pt_users": 13,
+          "total_agents": 40
+        },
+        {
+          "car_users": 20,
+          "color": [
+            167,
+            87,
+            60,
+            213
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164527fffff",
+          "lat": 25.299109665926455,
+          "lng": 83.00344782736306,
+          "pt_adoption_rate": 34.5,
+          "pt_users": 40,
+          "total_agents": 116
+        },
+        {
+          "car_users": 8,
+          "color": [
+            146,
+            108,
+            60,
+            183
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164529fffff",
+          "lat": 25.313252168056643,
+          "lng": 82.99476624163208,
+          "pt_adoption_rate": 42.7,
+          "pt_users": 32,
+          "total_agents": 75
+        },
+        {
+          "car_users": 7,
+          "color": [
+            167,
+            87,
+            60,
+            219
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c16452bfffff",
+          "lat": 25.313466791839275,
+          "lng": 83.00400419234612,
+          "pt_adoption_rate": 34.4,
+          "pt_users": 43,
+          "total_agents": 125
+        },
+        {
+          "car_users": 4,
+          "color": [
+            151,
+            103,
+            60,
+            133
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c16452dfffff",
+          "lat": 25.305966645511766,
+          "lng": 82.9898697025435,
+          "pt_adoption_rate": 40.7,
+          "pt_users": 11,
+          "total_agents": 27
+        },
+        {
+          "car_users": 1,
+          "color": [
+            170,
+            84,
+            60,
+            102
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164531fffff",
+          "lat": 25.313894355396947,
+          "lng": 83.02248205966825,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 3,
+          "total_agents": 9
+        },
+        {
+          "car_users": 26,
+          "color": [
+            157,
+            97,
+            60,
+            242
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164539fffff",
+          "lat": 25.32096585524611,
+          "lng": 83.01814093197366,
+          "pt_adoption_rate": 38.2,
+          "pt_users": 63,
+          "total_agents": 165
+        },
+        {
+          "car_users": 6,
+          "color": [
+            170,
+            84,
+            60,
+            180
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c16453bfffff",
+          "lat": 25.32117929280262,
+          "lng": 83.02738077402805,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 24,
+          "total_agents": 72
+        },
+        {
+          "car_users": 15,
+          "color": [
+            149,
+            105,
+            60,
+            222
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c16453dfffff",
+          "lat": 25.31368085432992,
+          "lng": 83.01324279849509,
+          "pt_adoption_rate": 41.2,
+          "pt_users": 54,
+          "total_agents": 131
+        },
+        {
+          "car_users": 3,
+          "color": [
+            148,
+            106,
+            60,
+            129
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164541fffff",
+          "lat": 25.34174382094886,
+          "lng": 82.98663982495093,
+          "pt_adoption_rate": 41.7,
+          "pt_users": 10,
+          "total_agents": 24
+        },
+        {
+          "car_users": 1,
+          "color": [
+            145,
+            109,
+            60,
+            135
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164543fffff",
+          "lat": 25.34195987651906,
+          "lng": 82.9958781337019,
+          "pt_adoption_rate": 42.9,
+          "pt_users": 12,
+          "total_agents": 28
+        },
+        {
+          "car_users": 2,
+          "color": [
+            170,
+            84,
+            60,
+            109
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c164545fffff",
+          "lat": 25.334459691417212,
+          "lng": 82.98174330189651,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 4,
+          "total_agents": 12
+        },
+        {
+          "car_users": 5,
+          "color": [
+            170,
+            84,
+            60,
+            137
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164547fffff",
+          "lat": 25.33467581013624,
+          "lng": 82.99098102904884,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 10,
+          "total_agents": 30
+        },
+        {
+          "car_users": 2,
+          "color": [
+            179,
+            75,
+            60,
+            133
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164549fffff",
+          "lat": 25.34881100046204,
+          "lng": 82.98229854610015,
+          "pt_adoption_rate": 29.6,
+          "pt_users": 8,
+          "total_agents": 27
+        },
+        {
+          "car_users": 2,
+          "color": [
+            166,
+            88,
+            60,
+            128
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c16454bfffff",
+          "lat": 25.349027554442205,
+          "lng": 82.99153678022658,
+          "pt_adoption_rate": 34.8,
+          "pt_users": 8,
+          "total_agents": 23
+        },
+        {
+          "car_users": 1,
+          "color": [
+            156,
+            98,
+            60,
+            132
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16454dfffff",
+          "lat": 25.341527203805697,
+          "lng": 82.9774021725392,
+          "pt_adoption_rate": 38.5,
+          "pt_users": 10,
+          "total_agents": 26
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            120
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c164551fffff",
+          "lat": 25.349458976945314,
+          "lng": 83.01001521653349,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 9,
+          "total_agents": 18
+        },
+        {
+          "car_users": 1,
+          "color": [
+            182,
+            72,
+            60,
+            113
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164553fffff",
+          "lat": 25.34967384520443,
+          "lng": 83.01925541789262,
+          "pt_adoption_rate": 28.6,
+          "pt_users": 4,
+          "total_agents": 14
+        },
+        {
+          "car_users": 2,
+          "color": [
+            167,
+            87,
+            60,
+            136
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164555fffff",
+          "lat": 25.342175370384304,
+          "lng": 83.00511709838162,
+          "pt_adoption_rate": 34.5,
+          "pt_users": 10,
+          "total_agents": 29
+        },
+        {
+          "car_users": 2,
+          "color": [
+            161,
+            93,
+            60,
+            121
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164557fffff",
+          "lat": 25.342390302412714,
+          "lng": 83.0143567185795,
+          "pt_adoption_rate": 36.8,
+          "pt_users": 7,
+          "total_agents": 19
+        },
+        {
+          "car_users": 1,
+          "color": [
+            127,
+            127,
+            60,
+            113
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164559fffff",
+          "lat": 25.35652682015279,
+          "lng": 83.00567363945245,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 7,
+          "total_agents": 14
+        },
+        {
+          "car_users": 0,
+          "color": [
+            191,
+            63,
+            60,
+            100
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c16455bfffff",
+          "lat": 25.35674218666735,
+          "lng": 83.0149137667555,
+          "pt_adoption_rate": 25.0,
+          "pt_users": 2,
+          "total_agents": 8
+        },
+        {
+          "car_users": 3,
+          "color": [
+            154,
+            100,
+            60,
+            141
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c16455dfffff",
+          "lat": 25.34924354664728,
+          "lng": 83.00077567050789,
+          "pt_adoption_rate": 39.4,
+          "pt_users": 13,
+          "total_agents": 33
+        },
+        {
+          "car_users": 3,
+          "color": [
+            156,
+            98,
+            60,
+            132
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c164561fffff",
+          "lat": 25.32010649007967,
+          "lng": 82.98118811625885,
+          "pt_adoption_rate": 38.5,
+          "pt_users": 10,
+          "total_agents": 26
+        },
+        {
+          "car_users": 4,
+          "color": [
+            145,
+            109,
+            60,
+            161
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164563fffff",
+          "lat": 25.32032217334887,
+          "lng": 82.99042533649086,
+          "pt_adoption_rate": 43.1,
+          "pt_users": 22,
+          "total_agents": 51
+        },
+        {
+          "car_users": 0,
+          "color": [
+            133,
+            121,
+            60,
+            125
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c164565fffff",
+          "lat": 25.312821237142487,
+          "lng": 82.97629230815052,
+          "pt_adoption_rate": 47.6,
+          "pt_users": 10,
+          "total_agents": 21
+        },
+        {
+          "car_users": 1,
+          "color": [
+            145,
+            109,
+            60,
+            152
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164567fffff",
+          "lat": 25.31303698311377,
+          "lng": 82.98552894676344,
+          "pt_adoption_rate": 42.9,
+          "pt_users": 18,
+          "total_agents": 42
+        },
+        {
+          "car_users": 0,
+          "color": [
+            163,
+            91,
+            60,
+            113
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c16456bfffff",
+          "lat": 25.327391347867035,
+          "lng": 82.98608435656305,
+          "pt_adoption_rate": 35.7,
+          "pt_users": 5,
+          "total_agents": 14
+        },
+        {
+          "car_users": 1,
+          "color": [
+            170,
+            84,
+            60,
+            94
+          ],
+          "dominant_archetype": "2",
+          "hex_id": "883c16456dfffff",
+          "lat": 25.319890245711836,
+          "lng": 82.97195155250851,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 2,
+          "total_agents": 6
+        },
+        {
+          "car_users": 2,
+          "color": [
+            153,
+            102,
+            60,
+            104
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164705fffff",
+          "lat": 25.370007549270984,
+          "lng": 82.96927426150967,
+          "pt_adoption_rate": 40.0,
+          "pt_users": 4,
+          "total_agents": 10
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            94
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164707fffff",
+          "lat": 25.37022559881574,
+          "lng": 82.97851227110236,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 3,
+          "total_agents": 6
+        },
+        {
+          "car_users": 0,
+          "color": [
+            0,
+            255,
+            60,
+            74
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164713fffff",
+          "lat": 25.38522403353231,
+          "lng": 83.00678689774611,
+          "pt_adoption_rate": 100.0,
+          "pt_users": 1,
+          "total_agents": 1
+        },
+        {
+          "car_users": 3,
+          "color": [
+            188,
+            66,
+            60,
+            128
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164721fffff",
+          "lat": 25.3556597343234,
+          "lng": 82.96871968994382,
+          "pt_adoption_rate": 26.1,
+          "pt_users": 6,
+          "total_agents": 23
+        },
+        {
+          "car_users": 2,
+          "color": [
+            207,
+            47,
+            60,
+            116
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164723fffff",
+          "lat": 25.35587734848231,
+          "lng": 82.97795719254438,
+          "pt_adoption_rate": 18.8,
+          "pt_users": 3,
+          "total_agents": 16
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            102
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164725fffff",
+          "lat": 25.34837620770488,
+          "lng": 82.9638240479533,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 3,
+          "total_agents": 9
+        },
+        {
+          "car_users": 0,
+          "color": [
+            159,
+            95,
+            60,
+            140
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164727fffff",
+          "lat": 25.34859388483888,
+          "lng": 82.97306096853899,
+          "pt_adoption_rate": 37.5,
+          "pt_users": 12,
+          "total_agents": 32
+        },
+        {
+          "car_users": 0,
+          "color": [
+            159,
+            95,
+            60,
+            100
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164729fffff",
+          "lat": 25.362724752066004,
+          "lng": 82.96437833680163,
+          "pt_adoption_rate": 37.5,
+          "pt_users": 3,
+          "total_agents": 8
+        },
+        {
+          "car_users": 1,
+          "color": [
+            170,
+            84,
+            60,
+            109
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16472bfffff",
+          "lat": 25.362942864816326,
+          "lng": 82.97361576433158,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 4,
+          "total_agents": 12
+        },
+        {
+          "car_users": 2,
+          "color": [
+            110,
+            144,
+            60,
+            128
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16472dfffff",
+          "lat": 25.355441558583767,
+          "lng": 82.95948284454471,
+          "pt_adoption_rate": 56.5,
+          "pt_users": 13,
+          "total_agents": 23
+        },
+        {
+          "car_users": 0,
+          "color": [
+            63,
+            191,
+            60,
+            100
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164731fffff",
+          "lat": 25.36337740483632,
+          "lng": 82.99209259003327,
+          "pt_adoption_rate": 75.0,
+          "pt_users": 6,
+          "total_agents": 8
+        },
+        {
+          "car_users": 1,
+          "color": [
+            162,
+            92,
+            60,
+            107
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164733fffff",
+          "lat": 25.363593831841595,
+          "lng": 83.00133198738426,
+          "pt_adoption_rate": 36.4,
+          "pt_users": 4,
+          "total_agents": 11
+        },
+        {
+          "car_users": 1,
+          "color": [
+            135,
+            119,
+            60,
+            115
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164735fffff",
+          "lat": 25.35609440092826,
+          "lng": 82.98719535193626,
+          "pt_adoption_rate": 46.7,
+          "pt_users": 7,
+          "total_agents": 15
+        },
+        {
+          "car_users": 3,
+          "color": [
+            176,
+            78,
+            60,
+            111
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164737fffff",
+          "lat": 25.356310891529116,
+          "lng": 82.99643416770914,
+          "pt_adoption_rate": 30.8,
+          "pt_users": 4,
+          "total_agents": 13
+        },
+        {
+          "car_users": 0,
+          "color": [
+            84,
+            170,
+            60,
+            84
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164739fffff",
+          "lat": 25.370443086375577,
+          "lng": 82.98775093752823,
+          "pt_adoption_rate": 66.7,
+          "pt_users": 2,
+          "total_agents": 3
+        },
+        {
+          "car_users": 1,
+          "color": [
+            255,
+            0,
+            60,
+            84
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16473bfffff",
+          "lat": 25.37066001181826,
+          "lng": 82.99699026037682,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 3
+        },
+        {
+          "car_users": 0,
+          "color": [
+            212,
+            42,
+            60,
+            94
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16473dfffff",
+          "lat": 25.36316041578386,
+          "lng": 82.98285384887889,
+          "pt_adoption_rate": 16.7,
+          "pt_users": 1,
+          "total_agents": 6
+        },
+        {
+          "car_users": 2,
+          "color": [
+            223,
+            31,
+            60,
+            100
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164761fffff",
+          "lat": 25.369569764756058,
+          "lng": 82.95080021446432,
+          "pt_adoption_rate": 12.5,
+          "pt_users": 1,
+          "total_agents": 8
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            100
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164763fffff",
+          "lat": 25.36978893787363,
+          "lng": 82.96003690916032,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 4,
+          "total_agents": 8
+        },
+        {
+          "car_users": 0,
+          "color": [
+            204,
+            51,
+            60,
+            91
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164765fffff",
+          "lat": 25.362286841746208,
+          "lng": 82.94590545443381,
+          "pt_adoption_rate": 20.0,
+          "pt_users": 1,
+          "total_agents": 5
+        },
+        {
+          "car_users": 0,
+          "color": [
+            191,
+            63,
+            60,
+            88
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164767fffff",
+          "lat": 25.362506077665152,
+          "lng": 82.95514156669907,
+          "pt_adoption_rate": 25.0,
+          "pt_users": 1,
+          "total_agents": 4
+        },
+        {
+          "car_users": 1,
+          "color": [
+            212,
+            42,
+            60,
+            94
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c16476dfffff",
+          "lat": 25.36935003005078,
+          "lng": 82.94156417783155,
+          "pt_adoption_rate": 16.7,
+          "pt_users": 1,
+          "total_agents": 6
+        },
+        {
+          "car_users": 2,
+          "color": [
+            80,
+            174,
+            60,
+            121
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e01fffff",
+          "lat": 25.276820610563263,
+          "lng": 82.97028786721232,
+          "pt_adoption_rate": 68.4,
+          "pt_users": 13,
+          "total_agents": 19
+        },
+        {
+          "car_users": 4,
+          "color": [
+            127,
+            127,
+            60,
+            135
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e03fffff",
+          "lat": 25.277035546633233,
+          "lng": 82.97952291064996,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 14,
+          "total_agents": 28
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            80
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e05fffff",
+          "lat": 25.269533117477256,
+          "lng": 82.96539348870664,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 1,
+          "total_agents": 2
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            84
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e07fffff",
+          "lat": 25.26974811535584,
+          "lng": 82.97462795048448,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 1,
+          "total_agents": 3
+        },
+        {
+          "car_users": 1,
+          "color": [
+            204,
+            51,
+            60,
+            91
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e09fffff",
+          "lat": 25.283892275881666,
+          "lng": 82.96594770941596,
+          "pt_adoption_rate": 20.0,
+          "pt_users": 1,
+          "total_agents": 5
+        },
+        {
+          "car_users": 1,
+          "color": [
+            149,
+            105,
+            60,
+            118
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e0bfffff",
+          "lat": 25.284107710278462,
+          "lng": 82.9751826778631,
+          "pt_adoption_rate": 41.2,
+          "pt_users": 7,
+          "total_agents": 17
+        },
+        {
+          "car_users": 2,
+          "color": [
+            159,
+            95,
+            60,
+            116
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e11fffff",
+          "lat": 25.284536897885097,
+          "lng": 82.99365458409396,
+          "pt_adoption_rate": 37.5,
+          "pt_users": 6,
+          "total_agents": 16
+        },
+        {
+          "car_users": 2,
+          "color": [
+            124,
+            130,
+            60,
+            157
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164e13fffff",
+          "lat": 25.284750650831498,
+          "lng": 83.00289152105756,
+          "pt_adoption_rate": 51.1,
+          "pt_users": 24,
+          "total_agents": 47
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            94
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e15fffff",
+          "lat": 25.277249922421834,
+          "lng": 82.98875861044394,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 2,
+          "total_agents": 6
+        },
+        {
+          "car_users": 0,
+          "color": [
+            255,
+            0,
+            60,
+            74
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e17fffff",
+          "lat": 25.27746373779739,
+          "lng": 82.99799496618422,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 1
+        },
+        {
+          "car_users": 1,
+          "color": [
+            136,
+            118,
+            60,
+            135
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164e19fffff",
+          "lat": 25.29160922805797,
+          "lng": 82.98931412719759,
+          "pt_adoption_rate": 46.4,
+          "pt_users": 13,
+          "total_agents": 28
+        },
+        {
+          "car_users": 5,
+          "color": [
+            143,
+            111,
+            60,
+            151
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164e1bfffff",
+          "lat": 25.291823479176205,
+          "lng": 82.99855098973846,
+          "pt_adoption_rate": 43.9,
+          "pt_users": 18,
+          "total_agents": 41
+        },
+        {
+          "car_users": 1,
+          "color": [
+            153,
+            102,
+            60,
+            123
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e1dfffff",
+          "lat": 25.28432258432353,
+          "lng": 82.98441830289242,
+          "pt_adoption_rate": 40.0,
+          "pt_users": 8,
+          "total_agents": 20
+        },
+        {
+          "car_users": 2,
+          "color": [
+            159,
+            95,
+            60,
+            100
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e31fffff",
+          "lat": 25.262888730039055,
+          "lng": 82.98820315227339,
+          "pt_adoption_rate": 37.5,
+          "pt_users": 3,
+          "total_agents": 8
+        },
+        {
+          "car_users": 1,
+          "color": [
+            153,
+            102,
+            60,
+            91
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e33fffff",
+          "lat": 25.26310210948374,
+          "lng": 82.99743900126684,
+          "pt_adoption_rate": 40.0,
+          "pt_users": 2,
+          "total_agents": 5
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            84
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e35fffff",
+          "lat": 25.255600636052616,
+          "lng": 82.98330789326458,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 1,
+          "total_agents": 3
+        },
+        {
+          "car_users": 0,
+          "color": [
+            0,
+            255,
+            60,
+            80
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e37fffff",
+          "lat": 25.255814077479748,
+          "lng": 82.99254316101418,
+          "pt_adoption_rate": 100.0,
+          "pt_users": 2,
+          "total_agents": 2
+        },
+        {
+          "car_users": 0,
+          "color": [
+            170,
+            84,
+            60,
+            84
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e39fffff",
+          "lat": 25.269962553155178,
+          "lng": 82.9838630688027,
+          "pt_adoption_rate": 33.3,
+          "pt_users": 1,
+          "total_agents": 3
+        },
+        {
+          "car_users": 1,
+          "color": [
+            145,
+            109,
+            60,
+            97
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e3bfffff",
+          "lat": 25.270176430743607,
+          "lng": 82.99309884325137,
+          "pt_adoption_rate": 42.9,
+          "pt_users": 3,
+          "total_agents": 7
+        },
+        {
+          "car_users": 0,
+          "color": [
+            255,
+            0,
+            60,
+            74
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e3dfffff",
+          "lat": 25.26267479045402,
+          "lng": 82.97896795918453,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 1
+        },
+        {
+          "car_users": 3,
+          "color": [
+            148,
+            106,
+            60,
+            129
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e51fffff",
+          "lat": 25.29846541801897,
+          "lng": 82.97573746374873,
+          "pt_adoption_rate": 41.7,
+          "pt_users": 10,
+          "total_agents": 24
+        },
+        {
+          "car_users": 5,
+          "color": [
+            141,
+            113,
+            60,
+            145
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164e53fffff",
+          "lat": 25.298680728121397,
+          "lng": 82.98497359554297,
+          "pt_adoption_rate": 44.4,
+          "pt_users": 16,
+          "total_agents": 36
+        },
+        {
+          "car_users": 0,
+          "color": [
+            162,
+            92,
+            60,
+            107
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e55fffff",
+          "lat": 25.291179043896328,
+          "lng": 82.97084237048999,
+          "pt_adoption_rate": 36.4,
+          "pt_users": 4,
+          "total_agents": 11
+        },
+        {
+          "car_users": 6,
+          "color": [
+            163,
+            91,
+            60,
+            183
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e57fffff",
+          "lat": 25.291394416254082,
+          "lng": 82.98007792064472,
+          "pt_adoption_rate": 36.0,
+          "pt_users": 27,
+          "total_agents": 75
+        },
+        {
+          "car_users": 1,
+          "color": [
+            204,
+            51,
+            60,
+            115
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e59fffff",
+          "lat": 25.305535589423897,
+          "lng": 82.97139693225233,
+          "pt_adoption_rate": 20.0,
+          "pt_users": 3,
+          "total_agents": 15
+        },
+        {
+          "car_users": 4,
+          "color": [
+            151,
+            103,
+            60,
+            162
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164e5bfffff",
+          "lat": 25.30575139788097,
+          "lng": 82.98063298917798,
+          "pt_adoption_rate": 40.4,
+          "pt_users": 21,
+          "total_agents": 52
+        },
+        {
+          "car_users": 0,
+          "color": [
+            191,
+            63,
+            60,
+            88
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c164ec5fffff",
+          "lat": 25.284963843031143,
+          "lng": 83.01212911337285,
+          "pt_adoption_rate": 25.0,
+          "pt_users": 1,
+          "total_agents": 4
+        },
+        {
+          "car_users": 1,
+          "color": [
+            127,
+            127,
+            60,
+            129
+          ],
+          "dominant_archetype": "Unknown",
+          "hex_id": "883c164ecdfffff",
+          "lat": 25.29203716947717,
+          "lng": 83.00778850785704,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 12,
+          "total_agents": 24
+        },
+        {
+          "car_users": 0,
+          "color": [
+            84,
+            170,
+            60,
+            84
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164ee1fffff",
+          "lat": 25.27060250476151,
+          "lng": 83.01157235889961,
+          "pt_adoption_rate": 66.7,
+          "pt_users": 2,
+          "total_agents": 3
+        },
+        {
+          "car_users": 4,
+          "color": [
+            166,
+            88,
+            60,
+            128
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164ee9fffff",
+          "lat": 25.277676992628304,
+          "lng": 83.00723197746056,
+          "pt_adoption_rate": 34.8,
+          "pt_users": 8,
+          "total_agents": 23
+        },
+        {
+          "car_users": 0,
+          "color": [
+            127,
+            127,
+            60,
+            80
+          ],
+          "dominant_archetype": "1",
+          "hex_id": "883c164eebfffff",
+          "lat": 25.277889686783112,
+          "lng": 83.0164696438626,
+          "pt_adoption_rate": 50.0,
+          "pt_users": 1,
+          "total_agents": 2
+        },
+        {
+          "car_users": 0,
+          "color": [
+            255,
+            0,
+            60,
+            74
+          ],
+          "dominant_archetype": "3",
+          "hex_id": "883c164eedfffff",
+          "lat": 25.270389747989558,
+          "lng": 83.00233527342043,
+          "pt_adoption_rate": 0.0,
+          "pt_users": 0,
+          "total_agents": 1
+        }
+      ],
+      "elevationScale": 30,
+      "extruded": true,
+      "filled": true,
+      "getElevation": "@@=pt_adoption_rate",
+      "getFillColor": "@@=color",
+      "getHexagon": "@@=hex_id",
+      "id": "241d89a8-aa51-47b3-9a38-0054471e9ca3",
+      "pickable": true,
+      "stroked": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "mapbox://styles/mapbox/dark-v10",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'html': '<b>Archetype:</b> {dominant_archetype}<br/><b>Agents in Zone:</b> {total_agents}<br/><b>Equilibrium PT Adoption:</b> {pt_adoption_rate}%', 'style': {'color': 'white', 'backgroundColor': '#222222'}};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration,
+          });
+
+  </script>
+</html>
